@@ -1,0 +1,13 @@
+/**
+
+@mainpage 15-410 Project 1
+
+@author Heather Arthur (harthur)
+
+The goal of Lights Out is turn all the lights off in the grid. pressing The character corresponding to the square on the grid "toggles" this light and the ones around it, namely, it flips whatever color this square was and the ones above, below, and to the left and right of it. Starting a new game is equivalent to losing. 
+
+In the design of this game, I choose to separate the implementation of the painting of the screen from the current state of game play and game flow. I had global variables for the traceback function, game time and the total time so that the random number generator could be seeded properly. This random number was used to toggle a specified number of squares to set-up a winnable game. 
+
+I also chose to use a circular buffer implementation of the keyboard character queue. This did not require dynamically allocating memory or other operations that took up significant time (as enqueuing took place inside the keyboard handler). This also did not require readchar to disable interrupts before dequeueing elements as enqueuing only accessed elements at the 'head' index and dequeuing only accessed elements at the 'tail' index, if these were ever the same, this would indicate an empty buffer and no operation would be performed anyways. I choose not to resize the buffer when it got full as this would require disabling interrupts for a significant period of time. 
+
+*/
